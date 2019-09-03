@@ -1,13 +1,15 @@
 {
   "name": "@captaincodeman/touchable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Touch handling mixin",
+  "main": "index.cjs",
   "module": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "tsc --module es2015 --declaration",
     "build:watch": "tsc --module es2015 --watch",
-    "mypublish:pre": "npm run build && cp readme.md package.json dist",
+    "bundle": "rollup -c",
+    "mypublish:pre": "npm run build && npm run bundle && cp readme.md package.json dist",
     "mypublish": "npm run mypublish:pre && npm publish dist --tag latest --access=public"
   },
   "author": "Simon Green <simon@captaincodeman.com> (https://github.com/captaincodeman)",
@@ -17,7 +19,7 @@
     "url": "https://github.com/captaincodeman/js-touchable"
   },
   "dependencies": {
-    "@captaincodeman/geometry": "^1.0.0",
+    "@captaincodeman/geometry": "^1.0.1",
     "passive": "0.0.2"
   },
   "devDependencies": {
@@ -25,6 +27,10 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-transform-bare-module-specifiers": "^1.0.2",
+    "rollup": "^1.20.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
     "typescript": "^3.6.2"
   }
 }
