@@ -1,5 +1,5 @@
-import { Point, distance } from '@captaincodeman/geometry/point'
-import { Rect, middle } from '@captaincodeman/geometry/rect'
+import { Point, dist } from '@captaincodeman/geometry/point'
+import { Rect, center } from '@captaincodeman/geometry/rect'
 import { Touchable } from './touchable'
 
 class TrackedPoint {
@@ -27,7 +27,7 @@ export class Tracking {
 
       case 2:
         const r = new Rect(points[0], points[1])
-        this.add(r.do(middle))
+        this.add(r.do(center))
         break
 
       default:
@@ -47,10 +47,10 @@ export class Tracking {
 
       case 2:
         const r = new Rect(points[0], points[1])
-        const p = r.do(middle)
+        const p = r.do(center)
         this.add(p)
 
-        const d = points[0].do(distance, points[1])
+        const d = points[0].do(dist, points[1])
         if (this.distance) {
           const delta = (d - this.distance) / 10
           const factor = Math.pow(1.06, delta)
